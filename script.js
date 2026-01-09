@@ -1,5 +1,7 @@
 // Initialize Lucide icons
-lucide.createIcons();
+if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+}
 
 // Mobile Menu Toggle
 const menuBtn = document.getElementById('menu-btn');
@@ -18,7 +20,10 @@ function toggleMenu() {
         mobileMenu.classList.remove('open');
         menuIcon.setAttribute('data-lucide', 'menu');
     }
-    lucide.createIcons(); // Re-render icon
+    // Re-render icon if lucide is available
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
 }
 
 menuBtn.addEventListener('click', toggleMenu);
@@ -51,7 +56,10 @@ document.querySelectorAll('.scroll-reveal').forEach(el => {
 });
 
 // Update Copyright Year
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearElement = document.getElementById('year');
+if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+}
 
 // Highlight Active Link (Simple implementation based on URL)
 const path = window.location.pathname;
