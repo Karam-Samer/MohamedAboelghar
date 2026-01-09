@@ -4,31 +4,34 @@ lucide.createIcons();
 // Mobile Menu Toggle
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
-const mobileLinks = document.querySelectorAll('.mobile-link');
-const menuIcon = menuBtn.querySelector('i');
 
-let isOpen = false;
+if (menuBtn && mobileMenu) {
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    const menuIcon = menuBtn.querySelector('i');
 
-function toggleMenu() {
-    isOpen = !isOpen;
-    if (isOpen) {
-        mobileMenu.classList.add('open');
-        menuIcon.setAttribute('data-lucide', 'x');
-    } else {
-        mobileMenu.classList.remove('open');
-        menuIcon.setAttribute('data-lucide', 'menu');
+    let isOpen = false;
+
+    function toggleMenu() {
+        isOpen = !isOpen;
+        if (isOpen) {
+            mobileMenu.classList.add('open');
+            menuIcon.setAttribute('data-lucide', 'x');
+        } else {
+            mobileMenu.classList.remove('open');
+            menuIcon.setAttribute('data-lucide', 'menu');
+        }
+        lucide.createIcons(); // Re-render icon
     }
-    lucide.createIcons(); // Re-render icon
-}
 
-menuBtn.addEventListener('click', toggleMenu);
+    menuBtn.addEventListener('click', toggleMenu);
 
-// Close menu when a link is clicked
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        if (isOpen) toggleMenu();
+    // Close menu when a link is clicked
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (isOpen) toggleMenu();
+        });
     });
-});
+}
 
 // Scroll Animation Observer
 const observerOptions = {
