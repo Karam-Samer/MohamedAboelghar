@@ -13,19 +13,17 @@
     /* Light Green Background */
     --color-bg-alt: #F4F9F6;
     /* Slightly different light green for animation */
-    --color-text-main: #1B1B1B;
-    /* Dark Grey/Green Text */
-    --color-text-light: #F1F8E9;
-    /* Light Text for dark backgrounds */
-    --color-white: #ffffff;
 
-    /* COMPATIBILITY MAPPINGS (for existing classes using old vars) */
-    --color-space-900: var(--color-text-main);
-    /* Text is now the 'dark' standard */
-    --color-space-800: var(--color-secondary);
+    /* Map Wrapper Fix */
+    --map-height: 400px;
+
     /* Secondary backgrounds map to Brown */
     --color-space-700: #5D4037;
     /* Darker Brown */
+    --color-space-800: #4E342E;
+    /* Deep Brown */
+    --color-space-900: #3E2723;
+    /* Very Dark Brown */
 
     --color-earth-500: var(--color-primary);
     --color-earth-600: var(--color-primary-light);
@@ -46,7 +44,28 @@
     --color-red-400: var(--color-secondary);
     --color-red-600: var(--color-secondary);
     --color-gold-400: var(--color-accent);
+    --color-white: #ffffff;
 }
+
+.map-wrapper {
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    height: auto;
+}
+
+.map-wrapper iframe {
+    border: none;
+    width: 100%;
+    flex: 1;
+    /* Stretch to fill container */
+    min-height: 400px;
+}
+
+
+
 
 /* Reset & Base Styles */
 * {
@@ -587,37 +606,39 @@ img {
     transition: background-color 0.3s;
 }
 
-.bg-blue {
-    background-color: var(--color-blue-600);
+/* Social Chip Brand Colors */
+.bg-scholar {
+    background-color: #4285F4;
 }
 
-.bg-blue:hover {
-    background-color: var(--color-blue-700);
+.bg-scholar:hover {
+    background-color: #3367D6;
 }
 
-.bg-green {
-    background-color: var(--color-green-600);
+.bg-orcid {
+    /* Used a darker green to ensure white text readability */
+    background-color: #89b02a;
 }
 
-.bg-green:hover {
-    background-color: var(--color-green-700);
+.bg-orcid:hover {
+    background-color: #7fa323;
 }
 
-.bg-red {
-    background-color: var(--color-red-600);
+.bg-frontiers {
+    background-color: #2D2D2D;
+    /* Dark Grey for Frontiers */
 }
 
-.bg-red:hover {
-    background-color: var(--color-red-700);
+.bg-frontiers:hover {
+    background-color: #000000;
 }
 
-.bg-slate {
-    background-color: var(--color-slate-500);
+.bg-linkedin {
+    background-color: #0077B5;
 }
 
-/* Adjusted based on code */
-.bg-slate:hover {
-    background-color: var(--color-slate-400);
+.bg-linkedin:hover {
+    background-color: #005582;
 }
 
 
@@ -795,8 +816,17 @@ img {
 .contact-card h3 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--color-white);
+    color: #ffffff !important;
     margin-bottom: 0.5rem;
+}
+
+/* Map Filters */
+.grayscale {
+    filter: grayscale(100%);
+}
+
+.hover\:grayscale-0:hover {
+    filter: grayscale(0);
 }
 
 .contact-card a,
@@ -1388,6 +1418,185 @@ img {
     }
 }
 
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
+
+.w-64 {
+    width: 16rem;
+}
+
+@media (min-width: 768px) {
+    .md\:w-64 {
+        width: 16rem;
+    }
+}
+
+/* Semantic Card Classes */
+.card,
+.card-award,
+.card-timeline {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    /* p-6 */
+    border-radius: 1rem;
+    /* rounded-2xl */
+    border: 1px solid var(--color-slate-200);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    /* shadow-md */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* transition-all duration-300 */
+    width: 100%;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.card-text {
+    color: var(--color-slate-600);
+}
+
+.card:hover,
+.card-award:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    /* hover:shadow-lg */
+}
+
+.card-award {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-award:hover {
+    border-color: rgba(250, 204, 21, 0.5);
+    /* gold-400/50 */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    /* shadow-xl */
+}
+
+@media (min-width: 768px) {
+
+    .card,
+    .card-award,
+    .card-timeline {
+        padding: 2rem;
+        /* md:p-8 */
+    }
+}
+
+/* Timeline specific hover */
+.card-timeline:hover {
+    border-color: var(--color-earth-500);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Base button extension */
+.btn-action {
+    padding: 0.75rem 1.5rem;
+    /* px-6 py-3 */
+    border-radius: 0.75rem;
+    /* rounded-xl */
+    font-weight: 700;
+    /* font-bold */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* transition-all */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    /* gap-2 */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    /* shadow-sm */
+    width: 100%;
+}
+
+.btn-action:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    /* hover:shadow-md */
+}
+
+.btn-white {
+    background-color: var(--color-white);
+    color: var(--color-slate-800);
+    border: 1px solid var(--color-slate-200);
+}
+
+.btn-white:hover {
+    background-color: var(--color-slate-100);
+}
+
+.btn-orange {
+    background-color: #ff6f00;
+    color: var(--color-white);
+}
+
+.btn-orange:hover {
+    background-color: #e65100;
+}
+
+.badge-gold {
+    color: var(--color-gold-400);
+    font-family: monospace;
+    background-color: var(--color-white);
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--color-slate-200);
+    border-radius: 9999px;
+    width: fit-content;
+    flex-shrink: 0;
+}
+
+.badge-date {
+    color: var(--color-slate-500);
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: var(--color-slate-100);
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--color-slate-200);
+    border-radius: 0.25rem;
+}
+
+.icon-box {
+    background-color: var(--color-slate-100);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--color-earth-500);
+}
+
+.card-inset {
+    background-color: var(--color-slate-50);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-slate-200);
+}
+
+
+
+.icon-circle {
+    background-color: rgba(46, 125, 50, 0.1);
+    /* earth-500/10 */
+    padding: 1rem;
+    border-radius: 9999px;
+    color: var(--color-earth-500);
+    transition: all 0.3s ease;
+}
+
+.group:hover .icon-circle {
+    background-color: var(--color-earth-500);
+    color: #ffffff;
+}
+
+
 /* Missing Hover Utilities */
 .hover\:text-slate-300:hover {
     color: var(--color-slate-300);
@@ -1415,14 +1624,6 @@ img {
     min-height: 400px;
 }
 
-/* Specific GrayScale Transition */
-.grayscale {
-    filter: grayscale(100%);
-}
-
-.hover\:grayscale-0:hover {
-    filter: grayscale(0);
-}
 
 .duration-500 {
     transition-duration: 500ms;
