@@ -5,7 +5,7 @@ lucide.createIcons();
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 const mobileLinks = document.querySelectorAll('.mobile-link');
-const menuIcon = menuBtn.querySelector('i');
+
 
 let isOpen = false;
 
@@ -13,12 +13,12 @@ function toggleMenu() {
     isOpen = !isOpen;
     if (isOpen) {
         mobileMenu.classList.add('open');
-        menuIcon.setAttribute('data-lucide', 'x');
+        menuBtn.innerHTML = '<i data-lucide="x" class="icon-lg"></i>';
     } else {
         mobileMenu.classList.remove('open');
-        menuIcon.setAttribute('data-lucide', 'menu');
+        menuBtn.innerHTML = '<i data-lucide="menu" class="icon-lg"></i>';
     }
-    lucide.createIcons(); // Re-render icon
+    lucide.createIcons();
 }
 
 menuBtn.addEventListener('click', toggleMenu);
