@@ -4,14 +4,28 @@
   "description": "Academic & Research Portfolio of Prof. Dr. Mohamed Amin Aboelghar - Remote Sensing & GIS Expert",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "/web-app-manifest-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
     },
     {
-      "src": "icon-512.png",
+      "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
     }
   ],
   "theme_color": "#0f172a",
